@@ -11,14 +11,7 @@ namespace WebCrawler_WPF.Model
     {
         private const byte START_CRAWLING_LEVEL = 1;
         private WebCrawler webCrawler;
-        private List<String> rootUrls;
         private String xmlPath;
-
-        
-        /*public WebCrawler wb
-        {
-            get { return webCrawler; }
-        }*/
 
         public void SetNewCrawlingLevel(int newLevel)
         {
@@ -38,7 +31,7 @@ namespace WebCrawler_WPF.Model
         public Task<CrawlResult> GetCrawlResultAsync()
         {
             List<String> urls = new List<String>();
-            XMLDeserializator.DeserializeStringList(urls,@xmlPath);
+            urls = XMLDeserializator.DeserializeStringList(xmlPath);
             return webCrawler.StartCrawlingAsync(urls,0);
         }
     }

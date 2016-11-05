@@ -8,14 +8,12 @@ namespace WebCrawler_WPF
 {
     public class DictionaryOutputFormatter
     {
-        private String result;
         private static String WriteWithTabs(int depth, String url)
         {
-            String result = "";
-            for (int i = 0; i < depth; i++)
-                result += "\t"; // replace this on tabs
-            result += url;
-            return result;
+            StringBuilder result = new StringBuilder("");
+            result.Append('\t', depth);
+            result.Append(url);
+            return result.ToString();
         }
 
         public static String FormatOutput(CrawlResult crawlResult,int depth)
@@ -25,9 +23,6 @@ namespace WebCrawler_WPF
             {
                 if (entry.Value != null)
                 {
-                    /*result += "\r\n";
-                    result += WriteWithTabs(depth, entry.Key);
-                    result += FormatOutput(entry.Value, depth + 1);*/
                     result.Append("\r\n");
                     result.Append(WriteWithTabs(depth, entry.Key));
                     result.Append(FormatOutput(entry.Value, depth + 1));

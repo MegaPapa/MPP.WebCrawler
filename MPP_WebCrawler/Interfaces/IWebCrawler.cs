@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPP_WebCrawler
+namespace WebCrawler_WPF
 {
     interface IWebCrawler
     {

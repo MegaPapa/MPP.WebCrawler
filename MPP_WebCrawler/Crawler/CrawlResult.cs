@@ -4,16 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MPP_WebCrawler
+namespace WebCrawler_WPF
 {
     public class CrawlResult
     {
-        private String url;
-        public String Url
-        {
-            get { return url; }
-            set { this.url = value; }
-        }
+        
         private Dictionary<String,CrawlResult> innerUrls;
         public Dictionary<String, CrawlResult> InnerUrls
         {

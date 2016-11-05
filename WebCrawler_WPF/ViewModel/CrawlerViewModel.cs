@@ -124,7 +124,6 @@ namespace WebCrawler_WPF.ViewModel
             set
             {
                 crawlResult = value;
-                MessageBox.Show(value.InnerUrls.Count.ToString());
             }
         }
 
