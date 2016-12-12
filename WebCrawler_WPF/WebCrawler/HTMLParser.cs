@@ -7,11 +7,13 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using NLog;
 
 namespace WebCrawler_WPF
 {
     public class HTMLParser
     {
+        private static readonly Logger logger = LogManager.GetCurrentClassLogger();
         //Get HTML document from url
         private static HtmlDocument GetHTMLDoc(String url)
         {
@@ -22,10 +24,11 @@ namespace WebCrawler_WPF
                 resultDoc = htmlWeb.Load(url);
                 return resultDoc;
             }
-            catch
-            { 
-                return null; 
+            catch (Exception e)
+            {
+                logger.Warn(e);
             }
+            return null;
         }
 
         //Get all href's from url
@@ -48,10 +51,11 @@ namespace WebCrawler_WPF
                 }
                 return result;
             }
-            catch
+            catch (Exception e)
             {
-                return null;
+                logger.Warn(e);
             }
+            return null;
         }
     }
 }

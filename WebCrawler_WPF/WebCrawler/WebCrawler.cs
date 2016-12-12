@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using NLog;
 
 namespace WebCrawler_WPF
 {
@@ -22,6 +23,7 @@ namespace WebCrawler_WPF
 
         public async Task<CrawlResult> StartCrawlingAsync(List<string> urls, int currentDepth)
         {
+            Logger logger = LogManager.GetCurrentClassLogger();
             Dictionary<string, CrawlResult> crawlResultList = new Dictionary<string, CrawlResult>();
             foreach (string url in urls)
             {
@@ -37,7 +39,7 @@ namespace WebCrawler_WPF
                             crawlResultList.Add(url, currentUrlCrawlResult); ;
                     }
                 }
-                catch {  }
+                catch (Exception e) { logger.Warn(e); }
             }
 
             CrawlResult crawlResult = new CrawlResult();

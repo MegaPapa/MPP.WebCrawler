@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,6 @@ namespace WebCrawler_WPF.ViewModel
 
                     CrawlResult = await Task.Run(() => crawlerModel.GetCrawlResultAsync());
                     startCrawlCommand.CanExecute = true;
-                    OutputString = DictionaryOutputFormatter.FormatOutput(crawlResult, 0);
                 }
             });
 
@@ -123,7 +123,11 @@ namespace WebCrawler_WPF.ViewModel
             get { return crawlResult; }
             set
             {
-                crawlResult = value;
+                if (crawlResult != value)
+                {
+                    crawlResult = value;
+                    OnPropertyChanged("CrawlResult");
+                }
             }
         }
 

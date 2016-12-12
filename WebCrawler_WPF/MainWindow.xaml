@@ -1,14 +1,21 @@
 ﻿<Window x:Class="WebCrawler_WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="419" Width="525">
-    <Grid Margin="0,0,2,0">
+        xmlns:viewModel="clr-namespace:WebCrawler_WPF.ViewModel"
+        xmlns:converter="clr-namespace:WebCrawler_WPF.TreeViewConverter"
+        Title="MainWindow" Height="419" Width="665">
+    <Window.Resources>
+        <viewModel:CrawlerViewModel x:Key="CrawlerViewModel"/>
+        <converter:TreeViewConverter x:Key="TreeViewConverter" />
+    </Window.Resources>
+    <Grid Margin="0,0,2,-1">
         <TextBox Text="{Binding Path=XmlRootPath}" x:Name="XMLPathTextBox" HorizontalAlignment="Left" Height="23" Margin="113,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
         <Button Command="{Binding StartCrawlCommand}"  Content="Start Crawling" HorizontalAlignment="Left" Margin="410,288,0,0" VerticalAlignment="Top" Width="95"/>
         <Label Content="XML Document :" HorizontalAlignment="Left" Margin="10,286,0,0" VerticalAlignment="Top"/>
         <Button Command="{Binding OpenDialogCommand}" Content="Open XML" HorizontalAlignment="Left" Margin="324,288,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBox Text="{Binding Path=MaxDepth}" x:Name="MaxDepthTextBox" HorizontalAlignment="Left" Height="23" Margin="89,327,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32"/>
         <Label Content="Max Depth :" HorizontalAlignment="Left" Margin="10,324,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.711,-0.654"/>
-        <TextBox Text="{Binding Path=OutputString}" AcceptsReturn="True"  x:Name="TextBox" HorizontalAlignment="Left" Height="271" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="495"/>
+        <TextBox Text="{Binding Path=OutputString}" AcceptsReturn="True"  x:Name="TextBox" HorizontalAlignment="Left" Height="123" Margin="375,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+        <TreeView x:Name="ResultTreeView" ItemsSource="{Binding CrawlResult, Converter={StaticResource TreeViewConverter}}" HorizontalAlignment="Left" Height="244" Margin="8,10,0,0" VerticalAlignment="Top" Width="633"/>
     </Grid>
 </Window>

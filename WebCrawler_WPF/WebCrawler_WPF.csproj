@@ -37,6 +37,9 @@
     <Reference Include="HtmlAgilityPack">
       <HintPath>lib\HtmlAgilityPack.dll</HintPath>
     </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.3.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -58,6 +61,7 @@
     </ApplicationDefinition>
     <Compile Include="AsyncCommands\AsynchronousCommand.cs" />
     <Compile Include="Model\CrawlerModel.cs" />
+    <Compile Include="TreeViewConverter\TreeViewConverter.cs" />
     <Compile Include="ViewModel\ViewModelRoot.cs" />
     <Compile Include="WebCrawler\CrawlResult.cs" />
     <Compile Include="WebCrawler\DictionaryOutputFormatter.cs" />
@@ -98,6 +102,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="NLog.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
